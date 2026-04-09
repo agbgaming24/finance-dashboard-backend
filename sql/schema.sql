@@ -1,6 +1,3 @@
--- Finance Dashboard Schema
--- Run this file once to set up the database
-
 CREATE DATABASE IF NOT EXISTS finance_dashboard;
 USE finance_dashboard;
 

@@ -24,7 +24,6 @@ export const getAllRecords = async (req, res) => {
     const { page, limit, offset } = paginate(req.query.page, req.query.limit);
     const { type, category, startDate, endDate } = req.query;
 
-    // Viewers and analysts see all; we could scope by user_id if needed
     const { rows, total } = await RecordModel.findAll({
       page, limit, offset, type, category, startDate, endDate,
     });

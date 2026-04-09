@@ -64,7 +64,6 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   try {
-    // Prevent self-deletion
     if (parseInt(req.params.id) === req.user.id) {
       return sendError(res, 'You cannot delete your own account.', 400);
     }

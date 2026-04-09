@@ -56,12 +56,9 @@ const RecordModel = {
     return true;
   },
 
-  // Soft delete
   async softDelete(id) {
     await pool.query('UPDATE financial_records SET is_deleted = 1 WHERE id = ?', [id]);
   },
-
-  // --- Dashboard aggregation queries ---
 
   async getTotals({ startDate, endDate }) {
     let where = 'WHERE is_deleted = 0';

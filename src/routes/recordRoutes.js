@@ -14,11 +14,9 @@ const router = Router();
 
 router.use(verifyToken);
 
-// Only analyst + admin can view records
 router.get('/', analystOrAdmin, getAllRecords);
 router.get('/:id', analystOrAdmin, getRecordById);
 
-// Only admins can create, update, or delete
 router.post('/', adminOnly, createRecordValidator, validate, createRecord);
 router.patch('/:id', adminOnly, updateRecordValidator, validate, updateRecord);
 router.delete('/:id', adminOnly, deleteRecord);

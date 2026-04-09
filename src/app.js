@@ -12,23 +12,19 @@ const app = express();
 
 app.use(express.json());
 
-// Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/users', userRoutes);
 app.use('/api/records', recordRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
-// Health check
 app.get('/api/health', (req, res) => {
   res.json({ success: true, message: 'Finance API is running.' });
 });
 
-// 404 handler
 app.use((req, res) => {
   sendError(res, `Route ${req.method} ${req.originalUrl} not found.`, 404);
 });
 
-// Global error handler
 app.use((err, req, res, next) => {
   if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
     return sendError(res, 'Invalid JSON payload.', 400);

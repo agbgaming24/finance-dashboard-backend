@@ -38,7 +38,6 @@ const UserModel = {
   },
 
   async update(id, fields) {
-    // Only update allowed columns
     const allowed = ['name', 'role', 'status'];
     const updates = Object.entries(fields).filter(([k]) => allowed.includes(k));
     if (updates.length === 0) return false;
